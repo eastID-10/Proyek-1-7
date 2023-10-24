@@ -1,0 +1,24 @@
+  @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+:root {
+    --main-color : #493B15;
+    --second-color : #FFECBB;
+    --body-color : #FFFFFF;
+    --main-font :'Krona One', sans-serif;
+    --heading-font : 'Kufam', sans-serif;
+
+}
+body{
+    background-color: var(--body-color);
+    font-family: var(--main-font);
+}
+.section {
+    background-image: url('../img/bg.png');
+    background-size: cover;
+}
+
+.bg-lumpia {
+    background-color: orange;
+  }
+.bg-brown{
+    background-color: #493B15;
+}
