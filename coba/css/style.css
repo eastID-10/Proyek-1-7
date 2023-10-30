@@ -22,3 +22,9 @@ body{
 .bg-brown{
     background-color: #493B15;
 }
+.card-img-top{
+    background-color: var(--second-color);
+}
+.card-body{
+    background-color: var(--second-color);
+}
