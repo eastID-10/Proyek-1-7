@@ -28,3 +28,29 @@ body{
 .card-body{
     background-color: var(--second-color);
 }
+.bg-image{
+    background-image: url("../img/galeri1.jpg");
+    width: fit-content;
+    background-size: cover;
+    
+}
+.form-container{
+    
+    position: relative;
+    margin: 250px auto;
+    width: 550px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: rgba(238, 241, 238, 0.1);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* background: #D9D9D9; */
+    /* opacity: 22%; */
+}
+.headline{
+    
+    font-weight:900;
+    box-shadow: #010c3e;
+}
+.container-fluid{
+    font-family: var(--main-font);
+}
