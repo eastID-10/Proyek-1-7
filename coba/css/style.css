@@ -25,9 +25,8 @@ body{
 .card-img-top{
     background-color: var(--second-color);
 }
-.card-body{
-    background-color: var(--second-color);
-}
+
+
 .bg-image{
     background-image: url("../img/galeri1.jpg");
     width: fit-content;
@@ -61,4 +60,10 @@ body{
 .card-img-top{
     width: 20%;
     position: relative;
+}
+.img{
+    width: 400px;
+    height: 220px;
+    
+    
 }
