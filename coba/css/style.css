@@ -18,6 +18,7 @@ body{
 
 .bg-lumpia {
     background-color: orange;
+   
   }
 .bg-brown{
     background-color: #493B15;
@@ -67,3 +68,8 @@ body{
     
     
 }
+/* css beli produk */
+.form-group{
+    font-weight: bold;
+}
+/* css daftar pesanan */
