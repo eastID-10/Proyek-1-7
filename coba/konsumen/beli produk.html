@@ -30,49 +30,90 @@
                   <li><a class="dropdown-item" href="#">Dashboard</a></li>
                   <li><a class="dropdown-item" href="#">Akun Profil</a></li>
                   <li><a class="dropdown-item" href="#">Beli Produk</a></li>
-                  <li><a class="dropdown-item" href="#">daftar Pesanan</a></li>
-                  <li><a class="dropdown-item" href="#">Status Pesanan</a></li>
                   <li><a class="dropdown-item" href="#">Keluhan</a></li>
+                  <li><a class="dropdown-item" href="#">Keluar Akun</a></li>
                 </ul>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-      <form action="" >
-        <div class="mb-3 ">
-          <label for="exampleInputName1" class="form-label">Nama Lengkap</label>
-          <input type="name" class="form-control" id="exampleInputName1" aria-describedby="nameHelp">
+    <div class="fw-bolder">
+    <div class="form-floating mb-3 mt-5 ">
+        <input type="Nama Lengkap" class="form-control" id="floatingInput" placeholder="Nama Lengkap">
+        <label for="floatingInput">Nama Lengkap</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+        <input type="No Handphone" class="form-control" id="floatinginput" placeholder="No Handphone">
+        <label for="floatingInput">No Handphone</label>
+    </div>
+    
+    <div class="row g-2">
+        <div class="col-md">
+          <div class="form-floating">
+            <input type="Provinsi" class="form-control" id="floatingInputGrid" placeholder="Provinsi">
+            <label for="floatingInputGrid">Provinsi</label>
+          </div>
         </div>
-        <div class="mb-3 ">
-          <label for="exampleInputEmail1" class="form-label">No Handphone</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div class="col-md mb-3">
+          <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" >
+            <label for="floatingInputGrid">Kota/Kabupaten</label>
+          </div>
         </div>
-        <div class="mb-3 ">
-          <label for="exampleFormControlTextarea1" class="form-label">Alamat Lengkap</label>
-           <textarea placeholder="Provinsi, Kota, Kecamatan, Desa, Detail Rumah" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-          
+      </div>
+      <div class="row g-2">
+        <div class="col-md mb-3">
+          <div class="form-floating">
+            <input type="Provinsi" class="form-control" id="floatingInputGrid" placeholder="Provinsi">
+            <label for="floatingInputGrid">Kecamatan</label>
+          </div>
         </div>
+        <div class="col-md mb-3">
+          <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" >
+            <label for="floatingInputGrid">Kelurahan</label>
+          </div>
+        </div>
+      </div>
+      <div class="row g-2">
+        <div class="col-md">
+          <div class="form-floating">
+            <input type="Provinsi" class="form-control" id="floatingInputGrid" placeholder="Provinsi">
+            <label for="floatingInputGrid">Jalan</label>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" >
+            <label for="floatingInputGrid">Rt/Rw</label>
+          </div>
+        </div>
+      </div>
+
         <div class=" row ">
-        <div class="container-fluid col-12">
-      
-        <div class="col-4">
-          <button type="submit" class="btn btn-primary"><h6 class="bi bi-plus-circle-fill">Tambah Produk</h6></button>
+               
       <div class="form-group mt-4">
+        <div class="col-4">
         <label for="exampleFormControlSelect1">Pilih Jenis Kulit Lumpia </label>
-        <select class="form-control" id="exampleFormControlSelect1">
+        <select class="form-control " id="exampleFormControlSelect1">
           <option>Kulit Lumpia Kecil</option>
           <option>Kulit Lumpia Standar</option>
           <option>Kulit Lumpia Jumbo</option>
         </select>
       </div>
       </div>
-      <div class="col-4 ">
+      <div class="col-4   mb-5">
         <label for="InputProduk" class="form-label">Banyak Pack</label>
         <input type="number" class="form-control">
       </div>
-    
+
+      
+        <button type="submit" class="btn btn-primary"><h6 class="bi bi-plus-circle-fill">Tambah Produk</h6></button>
+      </div>
     </form>
+  </div>
     
     <table class="table table-bordered border-primary mt-lg-4">
     <thead>
@@ -95,12 +136,12 @@
     </tbody>
     </table>
   </div>
-    <div class="row">
+ 
       
-      <div class="col-3">
+      <div class="col-12 text-center mb-lg-5">
     <button type="submit" class="btn btn-warning text-white"><h6 class="bi bi-cart-check-fill me-2">Beli Semua</h6></button>
     </div>
-   </div>
+
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>
