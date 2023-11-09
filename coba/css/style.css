@@ -81,3 +81,8 @@ body{
     border-radius: 15px;
     background: rgba(238, 241, 238, 0.1);
 }
+/* dashboard admin */
+.container-ds{
+    background-color: #4f95e1;
+   
+}
