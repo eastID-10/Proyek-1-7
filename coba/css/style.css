@@ -98,3 +98,10 @@ body{
     background-color: #4f95e1;
    
 }
+
+.table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
