@@ -1,4 +1,18 @@
-<!doctype html>
+<?php
+session_start();
+error_reporting(0);
+ini_set('date.timezone', 'Asia/Jakarta');
+include "../assets/koneksi.php";
+include "../assets/database.php";
+
+if (empty($_SESSION['username']) AND empty($_SESSION['password'])) {
+    echo "<script> document.location='login.php'; </script>";
+} else {
+  
+
+?>
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -27,12 +41,12 @@
                   Menu
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#">Dashboard</a></li>
-                  <li><a class="dropdown-item" href="#">Akun Profil</a></li>
-                  <li><a class="dropdown-item" href="#">Kelola Produk</a></li>
-                  <li><a class="dropdown-item" href="#">Kelola Pesanan</a></li>
-                  <li><a class="dropdown-item" href="#">Keluhan Konsumen</a></li>
-                  <li><a class="dropdown-item" href="#">Keluar Akun</a></li>
+                  <li><a class="dropdown-item" href="index.php">Dashboard</a></li>
+                  <li><a class="dropdown-item" href="akun_profil.php">Akun Profil</a></li>
+                  <li><a class="dropdown-item" href="kelola_produk">Kelola Produk</a></li>
+                  <li><a class="dropdown-item" href="pesanan_masuk(kelola).php">Kelola Pesanan</a></li>
+                  <li><a class="dropdown-item" href="kelola_keluhan.php">Keluhan Konsumen</a></li>
+                  <li><a class="dropdown-item" href="logout.php">Keluar Akun</a></li>
                 </ul>
               </li>
             </ul>
@@ -94,3 +108,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
+<?php
+}
+?>

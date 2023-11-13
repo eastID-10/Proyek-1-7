@@ -28,11 +28,12 @@
                   Menu
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#">Dashboard</a></li>
-                  <li><a class="dropdown-item" href="#">Akun Profil</a></li>
-                  <li><a class="dropdown-item" href="#">Beli Produk</a></li>
-                  <li><a class="dropdown-item" href="#">Keluhan</a></li>
-                  <li><a class="dropdown-item" href="#">Keluar Akun</a></li>
+                  <li><a class="dropdown-item" href="index.php">Dashboard</a></li>
+                  <li><a class="dropdown-item" href="akun_profil.php">Akun Profil</a></li>
+                  <li><a class="dropdown-item" href="kelola_produk.php">Kelola Produk</a></li>
+                  <li><a class="dropdown-item" href="pesanan_masuk(kelola).php">Kelola Pesanan</a></li>
+                  <li><a class="dropdown-item" href="kelola_keluhan.php">Keluhan Konsumen</a></li>
+                  <li><a class="dropdown-item" href="logout.php">Keluar Akun</a></li>
                 </ul>
               </li>
             </ul>
