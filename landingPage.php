@@ -60,7 +60,7 @@
     <div class=" row ms-lg-5 mb-xxl-5 ">
       <div class="col-4 text-center">
         <div class="card " style="width: 14rem;">
-          <img src="../img/kecil.png" width="200" class="card-img-fluid " alt="...">
+          <img src="img/kecil.png" width="200" class="card-img-fluid " alt="...">
           <div class="card-body">
             <h3 class="card-text ">Kulit Lumpia Kecil</h3>
             <h4>Isi 100 Lembar</h4>
@@ -75,7 +75,7 @@
 
       <div class="col-4 text-center">
       <div class="card " style="width: 14rem;">
-        <img src="../img/standar.png" width="200" class="card-img-fluid" alt="...">
+        <img src="img/standar.png" width="200" class="card-img-fluid" alt="...">
         <div class="card-body ">
           <h3 class="card-text">Kulit Lumpia Standar</h3>
           <h4>Isi 90 Lembar</h4>
@@ -90,7 +90,7 @@
       
       <div class="col-4 text-center">
           <div class="card" style="width: 14rem;">
-            <img src="../img/jumbo.png" width="200" height="auto" class="card-img-fluid" alt="...">
+            <img src="img/jumbo.png" width="200" height="auto" class="card-img-fluid" alt="...">
             <div class="card-body">
               <h3 class="card-text">Kulit Lumpia Jumbo</h3>
               <h4>Isi 80 Lembar</h4>

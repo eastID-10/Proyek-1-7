@@ -41,45 +41,86 @@
       </nav>
     <div class="row mt-lg-5">
         <div class="col-2">
-        <button type="Add" class="btn btn-outline-primary"><h6 class="bi bi-plus-circle-fill">Tambah Produk</h6></button>
+          <button type="Add" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProduk"><h6 class="bi bi-plus-circle-fill">Tambah Produk</h6></button>
         </div>
-        <div class="col-2">
-        <button type="Edit" class="btn btn-outline-warning"><h6 class="bi bi-plus-circle-fill">Perbarui Produk</h6></button>
-        </div>
-    </div>
+        
     
-    <table class="table table-bordered border-primary mt-lg-4">
-    <thead>
-      <tr>
-        <th scope="col">No</th>
-        <th scope="col">Nama Produk</th>
-        <th scope="col">Harga produk</th>
-        <th scope="col">Banyak Stok </th>
-       
-      </tr>
-    </thead>
-    <tbody>
-      <tr scope="row">
-        <td>1</td>
-        <td>Kulit Lumpia Kecil</td>
-        <td>10.000</td>
-        <td>10</td>
+    <table class="table table-bordered border-primary mt-lg-4 ">
+      <thead>
+        <tr>
+          <th scope="col" width="20px">No</th>
+          <th scope="col">Nama Produk</th>
+          <th scope="col">Harga produk</th>
+          <th scope="col">Banyak Stok </th>
+          <th scope="col" width="20px">Edit</th>
         </tr>
-    </tbody>
+      </thead>
+      <tbody>
+        <tr scope="row">
+          <td>1</td>
+          <td>Kulit Lumpia Kecil</td>
+          <td>10.000</td>
+          <td>10</td>
+          <td class="text-center" style="color: blue;"><a href="" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square "  ></i></a></td>
+        </tr>
+        
+      </tbody>
     </table>
   </div>
-<!-- modal -->
-  <div class="modal" tabindex="-1" role="dialog">
+  <!-- Modal tambah data  -->
+<div class="modal fade" id="modalProduk" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="judulModal">Tambahkan Varian Produk Anda!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/tabungan/tambah" method="post">
+            <div class="mb-3 produk">
+                <label for="nisn" class="form-label">Nama Produk</label>
+                <input type="text" class="form-control" id="namaProduk" name="namaProduk">
+            </div>
+            <div class="mb-3">
+                <label for="harga" class="form-label">Harga</label>
+                <input type="number" class="form-control" id="harga" name="harga">
+            </div>
+            <div class="mb-3">
+              <label for="stok" class="form-label">Stok Produk</label>
+              <input type="number" class="form-control" id="stok" name="stok">
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Tambah Varian Produk</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal edit -->
+  <div class="modal" id="edit" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
+          <h5 class="modal-title">Tambahkan Varian Produk Anda!</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p>Modal body text goes here.</p>
+          <div class="mb-3 nisn-class">
+            <label for="nisn" class="form-label">Nama Produk</label>
+            <input type="text" class="form-control" id="namaProduk" name="namaProduk">
+        </div>
+        <div class="mb-3">
+            <label for="harga" class="form-label">Harga</label>
+            <input type="number" class="form-control" id="harga" name="harga">
+        </div>
+        <div class="mb-3">
+          <label for="stok" class="form-label">Stok Produk</label>
+          <input type="number" class="form-control" id="stok" name="stok">
+        </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
