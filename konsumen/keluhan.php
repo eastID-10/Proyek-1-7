@@ -51,21 +51,22 @@ include "../assets/database.php";
       <form action="keluhan.php?action=save" method="POST">
         <div class="form-group">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="NamaLengkap" name="namaLengkap">
+                <input type="text" class="form-control" id="namaLengkap" placeholder="NamaLengkap" name="namaLengkap">
                 <label for="floatingInput">Nama Lengkap</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatinginput" placeholder="Nohanphone" name="noHp">
+                <input type="text" class="form-control" id="noHp" placeholder="Nohanphone" name="noHp">
                 <label for="floatinginput">No Handphone</label>
             </div>
             <div class="form-floating">
-              <textarea class="form-control" placeholder="Leave a comment here" name="keluhan" id="floatingTextarea2" style="height: 100px"></textarea>
+              <textarea class="form-control" placeholder="Leave a comment here" name="keluhan" id="keluhan" style="height: 100px"></textarea>
               <label for="floatingTextarea2">Keluhan</label>
             </div>
         </div>
     </form>
     <button type="submit" class="btn btn-primary">Kirim</button>
     <?php
+    break;
 case 'save':
   if(isset($_POST['namaLengkap'])) {
       $namaLengkap = $_POST['namaLengkap'];
