@@ -1,3 +1,10 @@
+<?php
+session_start();
+error_reporting(0);
+ini_set('date.timezone', 'Asia/Jakarta');
+include "../assets/koneksi.php";
+include "../assets/database.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,23 +44,47 @@
           </div>
         </div>
       </nav>
-      <form>
+      <?php
+      switch ($_GET['action']) {
+      default:
+      ?>
+      <form action="keluhan.php?action=save" method="POST">
         <div class="form-group">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Nama Lengkap">
+                <input type="text" class="form-control" id="floatingInput" placeholder="NamaLengkap" name="namaLengkap">
                 <label for="floatingInput">Nama Lengkap</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatinginput" placeholder="No hanphone">
+                <input type="text" class="form-control" id="floatinginput" placeholder="Nohanphone" name="noHp">
                 <label for="floatinginput">No Handphone</label>
             </div>
             <div class="form-floating">
-              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+              <textarea class="form-control" placeholder="Leave a comment here" name="keluhan" id="floatingTextarea2" style="height: 100px"></textarea>
               <label for="floatingTextarea2">Keluhan</label>
             </div>
         </div>
     </form>
     <button type="submit" class="btn btn-primary">Kirim</button>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <?php
+case 'save':
+  if(isset($_POST['namaLengkap'])) {
+      $namaLengkap = $_POST['namaLengkap'];
+      $noHp = $_POST['noHp'];
+      $keluhan = $_POST['keluhan'];
+      $db = new database();
+      $query = $db->query_data("INSERT INTO keluhan (nama_lengkap, no_handphone, keluhan)
+      VALUES ('".$namaLengkap."', '".$noHp."', '".$keluhan."')");
+      if($query) {
+          echo "<script> document.location='keluhan.php'; </script>";
+      } else {
+          echo "<script> alert('Gagal'); document.location='keluhan.php'; </script>";
+      }
+  }
+  break;
+?>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php
+      }
+      ?>
