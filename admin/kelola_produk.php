@@ -1,3 +1,10 @@
+<?php
+session_start();
+error_reporting(0);
+ini_set('date.timezone', 'Asia/Jakarta');
+include "../assets/koneksi.php";
+include "../assets/database.php";
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,8 +37,8 @@
                   <li><a class="dropdown-item" href="index.php">Dashboard</a></li>
                   <li><a class="dropdown-item" href="akun_profil.php">Akun Profil</a></li>
                   <li><a class="dropdown-item" href="kelola_produk.php">Kelola Produk</a></li>
-                  <li><a class="dropdown-item" href="pesanan_masuk(kelola).php">Kelola Pesanan</a></li>
-                  <li><a class="dropdown-item" href="kelola_keluhan.php">Keluhan Konsumen</a></li>
+                  <li><a class="dropdown-item" href="pesanan_masuk.php">Kelola Pesanan</a></li>
+                  <li><a class="dropdown-item" href="keluhan_admin.php">Keluhan Konsumen</a></li>
                   <li><a class="dropdown-item" href="logout.php">Keluar Akun</a></li>
                 </ul>
               </li>
@@ -43,7 +50,11 @@
         <div class="col-2">
           <button type="Add" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProduk"><h6 class="bi bi-plus-circle-fill">Tambah Produk</h6></button>
         </div>
-        
+     
+    <?php
+    switch ($_GET['action']) {
+      default:
+      ?>
     
     <table class="table table-bordered border-primary mt-lg-4 ">
       <thead>
@@ -56,13 +67,25 @@
         </tr>
       </thead>
       <tbody>
+      <?php
+          $nomor =1;
+          $db = new database();
+          $data = $db->tampil_data("SELECT * FROM produk ORDER BY id_produk asc");
+          foreach($data as $data){
+            ?>
         <tr scope="row">
-          <td>1</td>
-          <td>Kulit Lumpia Kecil</td>
-          <td>10.000</td>
-          <td>10</td>
+          <td><?=$nomor;?></td>
+          <td><?=$data['nama_produk'];?></td>
+          <td>Rp. <?=$data['harga'];?></td>
+          <td><?=$data['stok'];?></td>
           <td class="text-center" style="color: blue;"><a href="" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square "  ></i></a></td>
         </tr>
+        <?php
+                $nomor++;
+
+            }
+          
+        ?>
         
       </tbody>
     </table>
@@ -76,7 +99,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/tabungan/tambah" method="post">
+        <form action="kelola_produk.php?action=save" method="POST">
             <div class="mb-3 produk">
                 <label for="nisn" class="form-label">Nama Produk</label>
                 <input type="text" class="form-control" id="namaProduk" name="namaProduk">
@@ -98,38 +121,60 @@
     </div>
   </div>
 </div>
-<!-- modal edit -->
-  <div class="modal" id="edit" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Tambahkan Varian Produk Anda!</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3 nisn-class">
-            <label for="nisn" class="form-label">Nama Produk</label>
-            <input type="text" class="form-control" id="namaProduk" name="namaProduk">
-        </div>
-        <div class="mb-3">
-            <label for="harga" class="form-label">Harga</label>
-            <input type="number" class="form-control" id="harga" name="harga">
-        </div>
-        <div class="mb-3">
-          <label for="stok" class="form-label">Stok Produk</label>
-          <input type="number" class="form-control" id="stok" name="stok">
-        </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<?php
+case 'save':
+  if(isset($_POST['namaProduk'])) {
+      $namaProduk = $_POST['namaProduk'];
+      $harga = $_POST['harga'];
+      $stok = $_POST['stok'];
+      $db = new database();
+      $query = $db->query_data("INSERT INTO produk (nama_produk, harga, stok)
+      VALUES ('".$namaProduk."', '".$harga."', '".$stok."')");
+      if($query) {
+          echo "<script> document.location='kelola_produk.php'; </script>";
+      } else {
+          echo "<script> alert('Gagal'); document.location='kelola_produk.php'; </script>";
+      }
+  }
+  break;
+}
+  
+// <!-- modal edit -->
+//   <div class="modal" id="edit" tabindex="-1" role="dialog">
+//     <div class="modal-dialog" role="document">
+//       <div class="modal-content">
+//         <div class="modal-header">
+//           <h5 class="modal-title">Tambahkan Varian Produk Anda!</h5>
+//           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+//             <span aria-hidden="true">&times;</span>
+//           </button>
+//         </div>
+//         <div class="modal-body">
+//           <div class="mb-3 nisn-class">
+//             <label for="nisn" class="form-label">Nama Produk</label>
+//             <input type="text" class="form-control" id="namaProduk" name="namaProduk">
+//         </div>
+//         <div class="mb-3">
+//             <label for="harga" class="form-label">Harga</label>
+//             <input type="number" class="form-control" id="harga" name="harga">
+//         </div>
+//         <div class="mb-3">
+//           <label for="stok" class="form-label">Stok Produk</label>
+//           <input type="number" class="form-control" id="stok" name="stok">
+//         </div>
+//         </div>
+//         <div class="modal-footer">
+//           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+//           <button type="button" class="btn btn-primary">Save changes</button>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+?>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+                      

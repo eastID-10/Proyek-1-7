@@ -31,8 +31,8 @@
                   <li><a class="dropdown-item" href="index.php">Dashboard</a></li>
                   <li><a class="dropdown-item" href="akun_profil.php">Akun Profil</a></li>
                   <li><a class="dropdown-item" href="kelola_produk.php">Kelola Produk</a></li>
-                  <li><a class="dropdown-item" href="pesanan_masuk(kelola).php">Kelola Pesanan</a></li>
-                  <li><a class="dropdown-item" href="kelola_keluhan.php">Keluhan Konsumen</a></li>
+                  <li><a class="dropdown-item" href="pesanan_masuk.php">Kelola Pesanan</a></li>
+                  <li><a class="dropdown-item" href="keluhan_admin.php">Keluhan Konsumen</a></li>
                   <li><a class="dropdown-item" href="logout.php">Keluar Akun</a></li>
                 </ul>
               </li>
