@@ -1,10 +1,3 @@
-<?php
-  include "assets/database.php";
-  include "assets/koneksi.php";
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,8 +18,8 @@
                       <img src="img/logo.png" alt="Logo" width="108" height="33" class="d-inline-block align-text-top">
                     </a>
                 <a class="nav-link active" aria-current="page" href="#">MENU</a>
-                <a class="nav-link" href="#">MASUK</a>
-                <a class="nav-link" href="#">DAFTAR</a>
+                <a class="nav-link" href="login.php">MASUK</a>
+                <a class="nav-link" href="daftar.php">DAFTAR</a>
               </div>
             </div>
         </nav>

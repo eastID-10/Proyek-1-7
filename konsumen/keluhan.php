@@ -48,6 +48,7 @@ include "../assets/database.php";
       switch ($_GET['action']) {
       default:
       ?>
+      <div class="container">
       <form action="keluhan.php?action=save" method="POST">
         <div class="form-group">
             <div class="form-floating mb-3">
@@ -63,29 +64,30 @@ include "../assets/database.php";
               <label for="floatingTextarea2">Keluhan</label>
             </div>
         </div>
-    </form>
-    <button type="submit" class="btn btn-primary">Kirim</button>
+        <button type="submit" class="btn btn-primary">Kirim</button>
+      </form>
+    
     <?php
     break;
-case 'save':
-  if(isset($_POST['namaLengkap'])) {
-      $namaLengkap = $_POST['namaLengkap'];
-      $noHp = $_POST['noHp'];
-      $keluhan = $_POST['keluhan'];
-      $db = new database();
-      $query = $db->query_data("INSERT INTO keluhan (nama_lengkap, no_handphone, keluhan)
-      VALUES ('".$namaLengkap."', '".$noHp."', '".$keluhan."')");
-      if($query) {
-          echo "<script> document.location='keluhan.php'; </script>";
-      } else {
-          echo "<script> alert('Gagal'); document.location='keluhan.php'; </script>";
+    case 'save':
+      if(isset($_POST['namaLengkap'])) {
+        $namaLengkap = $_POST['namaLengkap'];
+        $noHp = $_POST['noHp'];
+        $keluhan = $_POST['keluhan'];
+        $db = new database();
+        $query = $db->query_data("INSERT INTO keluhan (nama_lengkap, no_handphone, keluhan)
+        VALUES ('".$namaLengkap."', '".$noHp."', '".$keluhan."')");
+        if($query) {
+            echo "<script> alert('Keluhan Anda Berhasil Dikirim!'); document.location='keluhan.php'; </script>";
+        } else {
+
+            echo "<script> alert('Gagal'); document.location='keluhan.php'; </script>";
+        } 
+      } else {echo "gagal";}
+    break;
       }
-  }
-  break;
-?>
+      ?>
+    </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
-<?php
-      }
-      ?>

@@ -66,6 +66,10 @@ switch ($_GET['action']) {
                         <div class="col-4">
                           <table class="table table-hover">
                             <tr>
+                              <th>Nama Lengkap</th>
+                              <td><?=$data['nama_lengkap'];?></td>
+                            </tr>
+                            <tr>
                               <th>Username</th>
                               <td><?=$data['username'];?></td>
                             </tr>
@@ -99,7 +103,10 @@ switch ($_GET['action']) {
   <?php
   break;
   case 'edit':
+  $db = new database();
+  $data= $db->get_data("SELECT * FROM user WHERE id_user='".$_GET['id']."'");
   ?>
+
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -140,36 +147,35 @@ switch ($_GET['action']) {
             </div>
           </nav>
       <div class="container">
-        <form>
+        <form method="POST" action="akun_profil.php?action=update">
             <div class="form-group">
                 <div class="form-floating mb-3">
-                    <input type="Nama Lengkap" class="form-control" id="floatingInput" placeholder="Nama Lengkap">
+                    <input type="hidden" class="form-control" id="floatingInput" name="id" placeholder="Nama Lengkap" value="<?=$data['id_user'];?>">
                     <label for="floatingInput">Nama Lengkap</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="Username" class="form-control" id="floatinginput" placeholder="Username">
+                    <input type="nama" class="form-control" id="floatingInput" name="nama" placeholder="Nama Lengkap" value="<?=$data['nama_lengkap'];?>">
+                    <label for="floatingInput">Nama Lengkap</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="Username" class="form-control" id="floatinginput" name="username" placeholder="Username" value="<?=$data['username'];?>">
                     <label for="floatinginput">Username</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="No Handphone" class="form-control" id="floatinginput" placeholder="No Handphone">
+                    <input type="NoHp" class="form-control" id="floatinginput" name="noHp" placeholder="No Handphone" value="<?=$data['no_handphone'];?>">
                     <label for="floatingInput">No Handphone</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <input type="password" class="form-control" id="floatingPassword" name="ps" placeholder="Password" value="<?=$data['password'];?>">
                     <label for="floatingPassword">Password</label>
                 </div>
-                <div class="row g-2">
-                  <div class="col-md">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingPassword" name="alamat" placeholder="Provinsi, Kota, Kecamatan, Desa, Detail Rumah " value="<?=$data['alamat'];?>">
+                    <label for="floatingPassword">Alamat</label>
+                </div>
                 
-                    <label for="floatingInputGrid" >Alamat  </label>
-                      <textarea type="Alamat" rows="5" class="form-control" id="floatingInputGrid" placeholder="Provinsi, Kota, Kecamatan, Desa, Detail Rumah "></textarea>
-            
-                  </div>
                     
                     <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input-right" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Klik Jika Sudah Benar</label>
-                    </div>
                     <div class="col-md">
                       <button type="submit" class="btn btn-primary center-block">Kirim</button>
                     </div>
@@ -182,6 +188,26 @@ switch ($_GET['action']) {
     </html>
   <?php
   break; 
+  case 'update':
+    if(isset($_POST['id'])) {
+        $id = $_POST['id'];
+        $nama = $_POST['nama'];
+        $username = $_POST['username'];
+        $noHp = $_POST['noHp'];
+        $ps = $_POST['ps'];
+        $alamat = $_POST['alamat'];
+        $db = new database();
+        $query = $db->query_data("UPDATE user SET  nama_lengkap ='".$nama."' , username ='".$username."' , 
+                                no_handphone ='".$noHp."', password ='".$ps."' , alamat ='".$alamat."' WHERE id_user='".$_POST['id']."'");
+        if($query) {
+            echo "<script> alert('Berhasil'); 
+            document.location='akun_profil.php'; </script>";
+        } else {
+            echo "<script> alert('gagal');
+                document.location='akun_profil.php?action=edit&id=".$POST['id']."'; </script>";
+        }
+    }
+    break;
   }
 
                   

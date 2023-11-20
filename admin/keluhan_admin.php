@@ -1,3 +1,10 @@
+<?php
+session_start();
+error_reporting(0);
+ini_set('date.timezone', 'Asia/Jakarta');
+include "../assets/koneksi.php";
+include "../assets/database.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,66 +46,58 @@
           </div>
         </div>
       </nav>
+     
+        
       <div class="container ">
-    
+      <?php
+          $nomor =1;
+          $db = new database();
+          $data = $db->tampil_data("SELECT * FROM keluhan ORDER BY id_keluhan asc");
+          foreach($data as $data){
+            
+            ?>
+      
         <div class="row">
             <div class="col-3"></div>
           <div class="col-6 col-center mt-lg-4">
             <div class="card">
               <div class="card-body">
                 <table >
+                  <tr>
+                    <th>No</th>
+                    <tr>
+                      <td><?=$nomor;?></td>
+                    </tr>
+                  </tr>
                     <tr>
                         <th>Nama </th>
                     </tr>
                     <tr>
-                        <td>easti</td>
+                        <td><?=$data['nama_lengkap'];?></td>
                     </tr>
                     <tr>
                         <td class="fw-bolder">No Handphone </td>
                     </tr>
                     <tr>
-                        <td>0891002239</td>
+                        <td><?=$data['no_handphone'];?></td>
                     </tr>
                     <tr>
                         <td class="fw-bolder">Keluhan</td>
                     </tr>
                     <tr>
-                        <td>kenapa pesanan belum dikirim</td>
+                        <td><?=$data['keluhan'];?></td>
                     </tr>
                 </table>
               </div>
             </div>
           </div>
           </div>
-          <div class="row">
-          <div class="col-3"></div>
-          <div class="col-6 col-center mt-lg-4">
-            <div class="card">
-              <div class="card-body">
-                <table >
-                    <tr>
-                        <th>Nama </th>
-                    </tr>
-                    <tr>
-                        <td>easti</td>
-                    </tr>
-                    <tr>
-                        <td class="fw-bolder">No Handphone </td>
-                    </tr>
-                    <tr>
-                        <td>0891002239</td>
-                    </tr>
-                    <tr>
-                        <td class="fw-bolder">Keluhan</td>
-                    </tr>
-                    <tr>
-                        <td>kenapa pesanan belum dikirim</td>
-                    </tr>
-                </table>
-              </div>
-            </div>
-            </div>
-            </div>
+          
+      </div>
+      <?php
+        $nomor++;
+      }
+          ?>
           
        
 
@@ -106,3 +105,4 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </body>
   </html>
+  

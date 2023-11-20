@@ -46,16 +46,16 @@ include "../assets/database.php";
           </div>
         </div>
       </nav>
-    <div class="row mt-lg-5">
-        <div class="col-2">
-          <button type="Add" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProduk"><h6 class="bi bi-plus-circle-fill">Tambah Produk</h6></button>
-        </div>
+    
      
     <?php
     switch ($_GET['action']) {
       default:
       ?>
-    
+    <div class="row mt-lg-5">
+        <div class="col-2">
+          <button type="Add" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProduk"><h6 class="bi bi-plus-circle-fill">Tambah Produk</h6></button>
+        </div>
     <table class="table table-bordered border-primary mt-lg-4 ">
       <thead>
         <tr>
@@ -78,7 +78,7 @@ include "../assets/database.php";
           <td><?=$data['nama_produk'];?></td>
           <td>Rp. <?=$data['harga'];?></td>
           <td><?=$data['stok'];?></td>
-          <td class="text-center" style="color: blue;"><a href="" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square "  ></i></a></td>
+          <td class="text-center" style="color: blue;"><a href="kelola_produk.php?action=edit&id=<?=$data['id_produk'];?>"><i class="bi bi-pencil-square "  ></i></a></td>
         </tr>
         <?php
                 $nomor++;
@@ -90,6 +90,8 @@ include "../assets/database.php";
       </tbody>
     </table>
   </div>
+
+
   <!-- Modal tambah data  -->
 <div class="modal fade" id="modalProduk" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
   <div class="modal-dialog">
@@ -137,6 +139,37 @@ case 'save':
       }
   }
   break;
+  case 'edit':
+    $query = mysqli_query($koneksi, "SELECT * FROM produk WHERE id_produk='".$_GET['id']."'");
+    $data= mysqli_fetch_assoc($query);
+    ?>
+        <form method="POST" action="kelola_produk.php?action=update">
+            <input type="hidden" name="id" value="<?=$data['id_produk']?>">
+            <label>Nama Produk:</label>
+            <input type="text" name="produk" class="form-control" required="true" value="<?=$data['nama_produk']?>" >
+            <label>Harga </label>
+            <input type="text" name="harga" class="form-control" required="true" value="<?=$data['harga']?>" >
+            <label>Stok:</label>
+            <input type="text" name="stok" class="form-control" required="true" value="<?=$data['stok']?>"> <br>
+            <button type="submit" class="btn btn-primary">UPDATE</button>
+            <a href="kelola_produk.php" class="btn btn default">KEMBALI</a>
+        </form>
+    <?php
+    break;
+    case 'update':
+      if(isset($_POST['id'])) {
+          $produk = $_POST['produk'];
+          $harga = $_POST['harga'];
+          $stok = $_POST['stok'];
+          $query = mysqli_query($koneksi, "UPDATE produk SET nama_produk='".$produk."', harga='".$harga."', stok='".$stok."'  WHERE id_produk='".$_POST['id']."'");
+          if($query) {
+              echo "<script> document.location='kelola_produk.php'; </script>";
+          } else {
+              echo "<script> alert ['gagal'];
+                  document.location='kelola_produk.php?action=edit&id=".$POST['id']."'; </script>";
+          }
+      }
+      break;
 }
   
 // <!-- modal edit -->
