@@ -44,6 +44,7 @@ include "../assets/database.php";
                 $data = mysqli_fetch_assoc($query);
                 $_SESSION['username'] = $data['username'];
                 $_SESSION['password'] = $data['password'];
+                $_SESSION['id'] = $data['id_user'];
                 echo "<script> document.location='index.php'; </script>";
             }
         }
@@ -68,7 +69,7 @@ include "../assets/database.php";
             <button type="submit" class="btn btn-primary"><h3>Masuk</h3></button>
           </div>
           <div class="text-center">
-            <p>Belum Mempunyai Akun <a href="#!">Daftar</a></p>
+            <p>Belum Mempunyai Akun <a href="daftar.php">Daftar</a></p>
           </div>
         </form>
          </div>

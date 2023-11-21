@@ -1,3 +1,10 @@
+<?php
+session_start();
+error_reporting(0);
+ini_set('date.timezone', 'Asia/Jakarta');
+include "../assets/koneksi.php";
+include "../assets/database.php";
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -39,39 +46,47 @@
           </div>
         </div>
       </nav>
+<?php
+    $db = new database();
+    $data= $db->get_data("SELECT * FROM user WHERE id_user='".$_SESSION['id']."'");
+?>
+    <form action="" method="POST">
     <div class="fw-bolder">
-    <div class="form-floating mb-3 mt-5 ">
-        <input type="Nama Lengkap" class="form-control" id="floatingInput" placeholder="Nama Lengkap">
+    <div class="form mb-3 mt-5 ">
         <label for="floatingInput">Nama Lengkap</label>
+        <input type="text" class="form-control" name="nama" id="floatingInput"  value="<?=$data['nama_lengkap'];?>">
     </div>
-    
-    <div class="form-floating mb-3">
-        <input type="No Handphone" class="form-control" id="floatinginput" placeholder="No Handphone">
+    <div class="form mb-3">
         <label for="floatingInput">No Handphone</label>
+        <input type="text" class="form-control" name="noHp" id="floatinginput"  value="<?=$data['no_handphone'];?>" >
     </div>
-    
     <div class="row g-2">
         <div class="col-md">
-          
             <label for="floatingInputGrid" >Alamat  </label>
-            <textarea type="Alamat" rows="5" class="form-control" id="floatingInputGrid" placeholder="Provinsi, Kota, Kecamatan, Desa, Detail Rumah "></textarea>
-        
-          </div>
+            <input type="text" rows="5" class="form-control" name="alamat" id="floatingInputGrid" value="<?=$data['alamat'];?>"></input>
         </div>
+    </div>
+    </form>
        
             
         
       
 
-        <div class=" row ">
-               
+      <div class=" row ">     
       <div class="form-group mt-4">
         <div class="col-4">
         <label for="exampleFormControlSelect1">Pilih Jenis Kulit Lumpia </label>
-        <select class="form-control " id="exampleFormControlSelect1">
-          <option>Kulit Lumpia Kecil</option>
-          <option>Kulit Lumpia Standar</option>
-          <option>Kulit Lumpia Jumbo</option>
+        <select class="form-control " name="produk" id="exampleFormControlSelect1">
+          <?php
+          
+          $db = new database();
+          $produk = $db->tampil_data("SELECT * FROM produk");
+          foreach ($produk as $produk){
+          ?>
+          <option value="<?=$produk['nama_produk']?>"> <?=$produk['nama_produk']?></option>
+          <?php
+          }
+          ?>
         </select>
       </div>
       </div>
@@ -107,10 +122,13 @@
     </tbody>
     </table>
   </div>
+  <?php
+      $nomor++;
+  ?>
  
       
       <div class="col-12 text-center mb-lg-5">
-    <button type="submit" class="btn btn-warning text-white"><h6 class="bi bi-cart-check-fill me-2">Beli Semua</h6></button>
+      <a href="detail_pesanan.php"><button type="submit" class="btn btn-warning text-white"><h6 class="bi bi-cart-check-fill me-2">Beli Semua</h6></button></a>
     </div>
 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
