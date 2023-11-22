@@ -52,7 +52,7 @@ include "../assets/database.php";
       <?php
           $nomor =1;
           $db = new database();
-          $data = $db->tampil_data("SELECT * FROM keluhan ORDER BY id_keluhan asc");
+          $data = $db->tampil_data("SELECT * FROM keluhan ORDER BY id_keluhan desc");
           foreach($data as $data){
             
             ?>
@@ -66,7 +66,7 @@ include "../assets/database.php";
                   <tr>
                     <th>No</th>
                     <tr>
-                      <td><?=$nomor;?></td>
+                      <td><?=$data['id_keluhan'];?></td>
                     </tr>
                   </tr>
                     <tr>

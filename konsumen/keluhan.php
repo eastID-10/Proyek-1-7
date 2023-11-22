@@ -48,7 +48,11 @@ include "../assets/database.php";
       switch ($_GET['action']) {
       default:
       ?>
-      <div class="container">
+      <div class="container-md">
+      <div class="container-ds text-white rounded-2 text-center">
+          <h3>Anda Mengalami Kendala? </h3>
+          <p>Silahkan Adukan Keluhan Anda Dengan Mengirim Formulir Keluhan Dibawah Ini!</p>
+        </div>
       <form action="keluhan.php?action=save" method="POST">
         <div class="form-group">
             <div class="form-floating mb-3">
@@ -64,7 +68,7 @@ include "../assets/database.php";
               <label for="floatingTextarea2">Keluhan</label>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Kirim</button>
+        <button type="submit" class="btn btn-primary text-center">Kirim</button>
       </form>
     
     <?php
