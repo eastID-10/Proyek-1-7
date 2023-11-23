@@ -104,7 +104,7 @@ switch ($_GET['action']) {
   break;
   case 'edit':
   $db = new database();
-  $data= $db->get_data("SELECT * FROM user WHERE id_user='".$_GET['id']."'");
+  $data= $db->get_data("SELECT * FROM user WHERE id_user='".$_SESSION['id']."'");
   ?>
 
     <!DOCTYPE html>
