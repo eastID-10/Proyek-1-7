@@ -44,6 +44,7 @@ include "../assets/database.php";
                 $data = mysqli_fetch_assoc($query);
                 $_SESSION['username'] = $data['username'];
                 $_SESSION['password'] = $data['password'];
+                $_SESSION['id'] = $data['id_user'];
                 echo "<script> document.location='index.php'; </script>";
             }
         }

@@ -51,7 +51,7 @@ switch ($_GET['action']) {
           <?php
               
               $db = new database();
-              $data = $db->tampil_data("SELECT * FROM user WHERE id = id_user ORDER BY id_user asc");
+              $data = $db->tampil_data("SELECT * FROM user WHERE id_user='".$_SESSION['id']."'");
               foreach($data as $data){
               ?>  
           <div class="container py-5">
