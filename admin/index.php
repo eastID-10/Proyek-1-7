@@ -53,18 +53,24 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password'])) {
           </div>
         </div>
       </nav>
-      <div class="row ">
+      <div class="row mt-2 ">
       <div class="col-4">
-        <div class="bi bi-journals "  style="font-size: 30px; text-align: center;"> 
-        <h4 > Kelola Pesanan</h4> </div>
+        <a class="link-dark link-underline link-underline-opacity-0" href="pesanan_masuk.php">
+          <div class="bi bi-journals "  style="font-size: 30px; text-align: center;"> 
+          <h4 > Kelola Pesanan</h4> </div>
+        </a>
       </div>
       <div class="col-4">
-        <div class="bi bi-box-seam"  style="font-size: 30px; text-align: center;"> 
-        <h4 > Kelola Produk</h4> </div>
-        </div>
+        <a class="link-dark link-underline link-underline-opacity-0" href="kelola_produk.php">
+          <div class="bi bi-box-seam"  style="font-size: 30px; text-align: center;"> 
+          <h4 > Kelola Produk</h4> </div>
+        </a>
+      </div>
         <div class="col-4">
-        <div class="bi bi-clipboard2-data "  style="font-size: 30px; text-align: center;"> 
-        <h4 > Informasi Pesanan</h4> </div>
+          <a class="link-dark link-underline link-underline-opacity-0" href="keluhan_admin.php">
+            <div class="bi bi-graph-down-arrow"  style="font-size: 30px; text-align: center;"> 
+            <h4 > Keluhan Konsumen</h4> </div>
+          </a>
       </div>
       <div class="container mt-lg-5 ">
         <div class="row">

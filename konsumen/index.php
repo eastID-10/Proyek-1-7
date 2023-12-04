@@ -77,7 +77,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password'])) {
         <p>Selamat Berbelanja Semoga Produk Terpenuhi</p>
       </div>
 
-      <div class="row ms-lg-5 mt-3">
+      <div class="row ms-lg-5 ">
         <div class="col-4 text-center">
           <div class="card " style="width: 14rem;">
             <img src="../img/kecil.png" width="200" class="card-img-fluid " alt="...">
