@@ -52,7 +52,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password'])) {
           </div>
         </div>
       </nav>
-      <div class="row">
+      <div class="row mt-3">
       <div class="col-4">
         <a class="link-dark link-underline link-underline-opacity-0" href="beli_produk.php">
           <div class="bi bi-clipboard-plus-fill "  style="font-size: 60px; text-align: center;"> 
@@ -72,8 +72,12 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password'])) {
         </a>
       </div>
 
+      <div class="container bg-color-warning text-black rounded-2 text-center mt-5">
+        <h3>Daftar Produk Yang Tersedia</h3>
+        <p>Selamat Berbelanja Semoga Produk Terpenuhi</p>
+      </div>
 
-      <div class="row ms-lg-5">
+      <div class="row ms-lg-5 mt-3">
         <div class="col-4 text-center">
           <div class="card " style="width: 14rem;">
             <img src="../img/kecil.png" width="200" class="card-img-fluid " alt="...">
