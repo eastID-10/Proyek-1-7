@@ -54,20 +54,26 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password'])) {
       </nav>
       <div class="row">
       <div class="col-4">
-        <div class="bi bi-clipboard-plus-fill "  style="font-size: 60px; text-align: center;"> 
-        <h4 > Beli Produk</h4> </div>
+        <a class="link-dark link-underline link-underline-opacity-0" href="beli_produk.php">
+          <div class="bi bi-clipboard-plus-fill "  style="font-size: 60px; text-align: center;"> 
+          <h4 > Beli Produk</h4> </div>
+        </a>
       </div>
       <div class="col-4">
-        <div class="bi bi-chat-right-text"  style="font-size: 60px; text-align: center;"> 
-        <h4 > Keluhan</h4> </div>
-        </div>
-        <div class="col-4">
-        <div class="bi bi-bi bi-cart "  style="font-size: 60px; text-align: center;"> 
-        <h4 > Status Pesanan</h4> </div>
+        <a class="link-dark link-underline link-underline-opacity-0" href="keluhan.php">
+          <div class="bi bi-chat-right-text"  style="font-size: 60px; text-align: center;"> 
+          <h4 > Keluhan</h4> </div>
+        </a>
+      </div>
+      <div class="col-4">
+        <a class="link-dark link-underline link-underline-opacity-0" href="daftar_pesanan.php">
+          <div class="bi bi-bi bi-cart "  style="font-size: 60px; text-align: center;"> 
+          <h4 > Status Pesanan</h4> </div>
+        </a>
       </div>
 
 
-      <div class="row ms-lg-4 ">
+      <div class="row ms-lg-5">
         <div class="col-4 text-center">
           <div class="card " style="width: 14rem;">
             <img src="../img/kecil.png" width="200" class="card-img-fluid " alt="...">
@@ -84,21 +90,21 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password'])) {
         </div>
   
         <div class="col-4 text-center">
-        <div class="card" style="width: 14rem;">
-          <img src="../img/standar.png" width="200" class="card-img-fluid" alt="...">
-          <div class="card-body ">
-            <h3 class="card-text">Kulit Lumpia Standar</h3>
-            <h4>Isi 90 Lembar</h4>
-            <p>komposisi:
-              Tepung Terigu
-              Garam
-              Minyak
-              Air</p>
+          <div class="card" style="width: 14rem;">
+            <img src="../img/standar.png" width="200" class="card-img-fluid" alt="...">
+            <div class="card-body ">
+              <h3 class="card-text">Kulit Lumpia Standar</h3>
+              <h4>Isi 90 Lembar</h4>
+              <p>komposisi:
+                Tepung Terigu
+                Garam
+                Minyak
+                Air</p>
+            </div>
           </div>
         </div>
-        </div>
         
-        <div class="col-4 text-center">
+          <div class="col-4 text-center">
             <div class="card" style="width: 14rem;">
               <img src="../img/jumbo.png" width="200" height="auto" class="card-img-fluid" alt="...">
               <div class="card-body">
