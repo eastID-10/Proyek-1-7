@@ -130,8 +130,9 @@ case 'save':
       $harga = $_POST['harga'];
       $stok = $_POST['stok'];
       $db = new database();
-      $query = $db->query_data("INSERT INTO produk (nama_produk, harga, stok)
-      VALUES ('".$namaProduk."', '".$harga."', '".$stok."')");
+      $query = $db->query_data("CALL log_produk('".$namaProduk."', '".$harga."', '".$stok."')");
+      // $query = $db->query_data("INSERT INTO produk (nama_produk, harga, stok)
+      // VALUES ('".$namaProduk."', '".$harga."', '".$stok."')");
       if($query) {
           echo "<script> document.location='kelola_produk.php'; </script>";
       } else {
@@ -146,7 +147,7 @@ case 'save':
         <form method="POST" action="kelola_produk.php?action=update">
             <input type="hidden" name="id" value="<?=$data['id_produk']?>">
             <label>Nama Produk:</label>
-            <input type="text" name="produk" class="form-control" required="true" value="<?=$data['nama_produk']?>" >
+            <input type="text" name="produk" class="form-control" required="true" value="<?=$data['nama_produk']?>"  >
             <label>Harga </label>
             <input type="text" name="harga" class="form-control" required="true" value="<?=$data['harga']?>" >
             <label>Stok:</label>

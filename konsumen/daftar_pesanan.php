@@ -1,4 +1,13 @@
+<?php
+session_start();
+error_reporting(0);
+ini_set('date.timezone', 'Asia/Jakarta');
+include "../assets/koneksi.php";
+include "../assets/database.php";
 
+switch ($_GET['action']) {
+  default:
+  ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -49,13 +58,14 @@
           <button class="btn btn-sm btn-outline-danger me-5" type="button">Pesanan Batal</button>
         </form>
       </nav>
-      
+  
+     
   <div class="container">
   <div class="row">
     <div class="col-6 col-center mt-lg-4">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Kulit Lumpia Kecil</h5>
+          <h5 class="card-title"></h5>
           <h7 class="card-text">10 X 10.000</h7>
           <p class="card-text">Easti damayanti 082100254481 larangan lohbener</p>
           <p class="card-link">Rp 100.000</p>
@@ -63,20 +73,19 @@
         </div>
       </div>
     </div>
-    <div class="col-6 col-center mt-lg-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Kulit Lumpia Kecil</h5>
-          <h7 class="card-text">10 X 10.000</h7>
-          <p class="card-text">Easti damayanti 082100254481 larangan lohbener</p>
-          <p class="card-link">Rp 100.000</p>
-          <a href="#" class="btn btn-primary">Proses</a>
-        </div>
-      </div>
+
+    <div class="mb-3 row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
     </div>
+  </div>
   </div>
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php
+}
+?>
