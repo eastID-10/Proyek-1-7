@@ -2,8 +2,8 @@
 session_start();
 error_reporting(0);
 ini_set('date.timezone', 'Asia/Jakarta');
-include "../assets/koneksi.php";
-include "../assets/database.php";
+include "assets/koneksi.php";
+include "assets/database.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -11,7 +11,7 @@ include "../assets/database.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Daftar Konsumen</title>
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body >

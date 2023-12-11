@@ -1,3 +1,11 @@
+<?php
+session_start();
+error_reporting(0);
+ini_set('date.timezone', 'Asia/Jakarta');
+include "assets/koneksi.php";
+include "assets/database.php";
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -19,18 +27,43 @@
      </div>
      <div class="row">
       <div class="col-12  text-white ">
-        
-        <form class="form-container mt-5 ">
+
+      <?php
+        if (isset($_POST['username'])) {
+            $username = mysqli_escape_string($koneksi, $_POST['username']);
+            $password = mysqli_escape_string($koneksi, $_POST['password']);
+            $cekkode = mysqli_fetch_assoc(mysqli_query($koneksi,
+                        "SELECT COUNT(username) AS jml FROM user WHERE
+                        username='".$username."' AND password= '".$password."'"));
+            if ($cekkode['jml'] < 1) {
+                echo "<script> alert('User tidak terdaftar');
+                    document.locaton='login.php'; </script>";
+            } else {
+                $query = mysqli_query($koneksi, "SELECT * FROM user
+                                        WHERE username='".$username."' AND password='".$password."'");
+                $data = mysqli_fetch_assoc($query);
+                $_SESSION['username'] = $data['username'];
+                $_SESSION['password'] = $data['password'];
+                $_SESSION['id'] = $data['id_user'];
+                $_SESSION['type'] = $data['type'];
+
+                if ($_SESSION['type'] == 'admin') echo "<script> document.location='admin/index.php'; </script>";
+                else if ($_SESSION['type'] == 'user') echo "<script> document.location='konsumen/index.php'; </script>";
+                
+            }
+        }
+    ?>
+        <form class="form-container mt-5 " method="POST" action=""> 
           <h1 class="text-center ">MASUK</h1>
           <p class="text-center ">Silakan Isi Formulir Di Bawah Ini!</p>
           <div class="mb-3 ">
             <label for="exampleInputName1" class="form-label"> </label>
-            <input type="name" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="Username/No Handphone">
+            <input type="name" class="form-control" id="username" aria-describedby="nameHelp" name="username" placeholder="Username">
           </div>
           
           <div class="mb-3">
             
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
           </div>
           <div class="col-md-6 d-flex ">
             <!-- Simple link -->
@@ -38,9 +71,6 @@
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary"><h3>Masuk</h3></button>
-          </div>
-          <div class="text-center">
-            <p>Belum Mempunyai Akun <a href="#!">Daftar</a></p>
           </div>
         </form>
          </div>
@@ -50,6 +80,7 @@
     
     <div class="bg-image">
       <h1><br></h1>
+      <br>
     </div>
     </div>
     </div>
