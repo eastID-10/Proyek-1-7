@@ -60,8 +60,10 @@ switch ($_GET['action']) {
           default:
             ?>
             <div class="row mt-lg-5">
-
-              <table class="table table-bordered border-primary mt-lg-4 ">
+              <div class="card">
+                <div class="card-body">
+                  <h2> PRODUK YANG TERSEDIA</H2>
+                <table class="table table-bordered border-primary mt-lg-4 ">
                 <thead>
                   <tr>
                     <th scope="col" width="20px">No</th>
@@ -75,7 +77,7 @@ switch ($_GET['action']) {
                   <?php
                   $nomor = 1;
                   $db = new database();
-                  $data = $db->tampil_data("SELECT * FROM produk ORDER BY id_produk asc");
+                  $data = $db->tampil_data("SELECT * FROM produk WHERE id_produk = id_produk ORDER BY id_produk asc");
                   foreach ($data as $data) {
                     ?>
                     <tr scope="row">
@@ -89,7 +91,7 @@ switch ($_GET['action']) {
                         <?= $data['harga']; ?>
                       </td>
                       <td>
-                        <?= $data['stok']; ?>
+                        <?= $data['stok']; ?> Pack
                       </td>
                       <td class="text-center" style="color: blue;"><a
                           href="detail_pesanan.php?action=&id=<?= $data['id_produk']; ?>"><i class="bi bi-cart "></i></a></td>
@@ -104,53 +106,11 @@ switch ($_GET['action']) {
 
                 </tbody>
               </table>
+                </div>
+              </div>
+              
             </div>
-            <div class="row ms-lg-4 ">
-              <div class="col-4 text-center">
-                <div class="card " style="width: 14rem;">
-                  <img src="../img/kecil.png" width="200" class="card-img-fluid " alt="...">
-                  <div class="card-body">
-                    <h3 class="card-text ">Kulit Lumpia Kecil</h3>
-                    <h4>Isi 100 Lembar</h4>
-                    <p>komposisi:
-                      Tepung Terigu
-                      Garam
-                      Minyak
-                      Air</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-4 text-center">
-                <div class="card" style="width: 14rem;">
-                  <img src="../img/standar.png" width="200" class="card-img-fluid" alt="...">
-                  <div class="card-body ">
-                    <h3 class="card-text">Kulit Lumpia Standar</h3>
-                    <h4>Isi 90 Lembar</h4>
-                    <p>komposisi:
-                      Tepung Terigu
-                      Garam
-                      Minyak
-                      Air</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-4 text-center">
-                <div class="card" style="width: 14rem;">
-                  <img src="../img/jumbo.png" width="200" height="auto" class="card-img-fluid" alt="...">
-                  <div class="card-body">
-                    <h3 class="card-text">Kulit Lumpia Jumbo</h3>
-                    <h4>Isi 80 Lembar</h4>
-                    <p>komposisi:
-                      Tepung Terigu
-                      Garam
-                      Minyak
-                      Air</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
               integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
               crossorigin="anonymous"></script>

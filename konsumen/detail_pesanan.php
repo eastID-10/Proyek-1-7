@@ -66,6 +66,7 @@ switch ($_GET['action']) {
 
         <button class="btn btn-lg btn-success mt-5">Proses</button>
         <form action="detail_pesanan.php?action=save" method="POST">
+          <input type="hidden" name="uid" value="<?= $_SESSION['id'] ?>">
           <?php
           $query = mysqli_query($koneksi, "SELECT * FROM user WHERE id_user='" . $_SESSION['id'] . "'");
           $data = mysqli_fetch_assoc($query);
@@ -161,10 +162,12 @@ switch ($_GET['action']) {
       $kuantitas = $_POST['kuantitas'];
       $harga = $_POST['harga'];
       $total = $_POST['total'];
+      $uid = $_POST['uid'];
 
       $db = new database();
-      $query = $db->query_data("CALL stok_kurang('".$tgl."', '".$nama_user."', '".$no_hp."', '".$alamat."', '".$namaProduk."', '".$kuantitas."', '".$harga."', '".$total."')");
+      $query = $db->query_data("CALL stok_kurang('".$tgl."', '".$nama_user."', '".$no_hp."', '".$alamat."', '".$namaProduk."', '".$kuantitas."', '".$harga."', '".$total."', '".$uid."')");
        if ($query) {
+        $_SESSION['id_user'] = $uid;
         echo "<script> alert('Pesanan Anda Berhasil Dibuat'); document.location='daftar_pesanan.php'; </script>";
       } else {
         echo "<script> alert('Gagal'); document.location='detail_pesanan.php'; </script>";

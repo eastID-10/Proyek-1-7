@@ -93,11 +93,12 @@ include "../assets/database.php";
           </div>
           </div>
           
-      </div>
+      
       <?php
         $nomor++;
       }
           ?>
+          </div>
           
        
 

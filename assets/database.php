@@ -1,8 +1,8 @@
 <?php
     class database {
         var $host = "localhost";
-        var $username = "root";
-        var $password = "";
+        var $username = "eastid";
+        var $password = "8Yh9L@gs3JuBhXOa";
         var $database = "proyek1";
         var $koneksi = "";
         function __construct() {
