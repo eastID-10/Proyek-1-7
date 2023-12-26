@@ -159,8 +159,8 @@ switch ($_GET['action']) {
 
         </html>
         <?php
-        break ;
-        case 'selesai':
+        break;
+       case 'selesai':
           $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'selesai' order by id_pemesanan  desc");
           foreach ($data as $data) {
             ?>
@@ -239,7 +239,7 @@ switch ($_GET['action']) {
 
         </html>
         <?php
-        break ;
+        break;
         case 'kirim':
           $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'kirim' order by id_pemesanan  desc");
           foreach ($data as $data) {
@@ -319,7 +319,7 @@ switch ($_GET['action']) {
 
         </html>
         <?php
-        break ;
+        break;
         case 'batal':
           $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'batal' order by id_pemesanan  desc");
           foreach ($data as $data) {
@@ -400,7 +400,7 @@ switch ($_GET['action']) {
 
         </html>
       <?php
-      break ;
+      break;
       }
 
 }
