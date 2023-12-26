@@ -55,12 +55,14 @@ switch ($_GET['action']) {
         </nav>
         <!-- nav status -->
         <nav class="navbar navbar-light bg-light">
-          <form class="container-fluid justify-content-start">
+          <li>
             <button class="btn btn-sm btn-outline-success me-5" type="button">Masih Diproses</button>
             <button class="btn btn-sm btn-outline-dark me-5" type="button">Pesanan Dikirim</button>
-            <button class="btn btn-sm btn-outline-warning me-5" type="button">Pesanan Selesai</button>
+            <a href="pesanan_masuk.php?action=selesai=<?= $data['selesai']; ?>"><button
+                class="btn btn-sm btn-outline-warning me-5" type="button">Pesanan Selesai</button></a>
             <button class="btn btn-sm btn-outline-danger me-5" type="button">Pesanan Batal</button>
-          </form>
+            <a class="nav-link" href="pesanan_masuk.php?action=selesai">Pesanan selesai</a>
+          </li>
         </nav>
 
     </body>
@@ -68,80 +70,329 @@ switch ($_GET['action']) {
       <?php
       $nomor = 1;
       $db = new database();
-      $data = $db->tampil_data("SELECT * FROM pemesanan order by id_pemesanan  desc");
-      foreach ($data as $data) {
-        ?>
-        <div class="row">
-          <div class="col-3"></div>
-          <div class="col-6 col-center mt-lg-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="col-3">
-                <button class=" text-center btn btn-sm btn-outline-primary  "><?=$nomor;?></button>
+
+      switch ($_GET['proses']) {
+        default:
+          $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'proses' order by id_pemesanan  desc");
+          foreach ($data as $data) {
+            ?>
+            <div class="row">
+              <div class="col-3"></div>
+              <div class="col-6 col-center mt-lg-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="col-3">
+                      <button class=" text-center btn btn-sm btn-outline-primary  ">
+                        <?= $nomor; ?>
+                      </button>
+                    </div>
+                    <table>
+
+                      <tr>
+                        <th class="col-4" style="width: 350px">Produk
+                          <?= $data['nama_produk']; ?>
+                        </th>
+                        <th class="col-4" style="width: 350px"></th>
+                        <th class="col-4 text-center" style="width: 350px">
+                          <?= tgljm_full($data['tgl_pesan']); ?>
+                        </th>
+
+                      </tr>
+                      <tr>
+                        <td>
+                          <?= $data['kuantitas']; ?> X Rp.
+                          <?= $data['harga']; ?>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Total Rp.
+                          <?= $data['total']; ?>
+                        </th>
+                      </tr>
+                      <tr>
+                        <th>Alamat Pengguna</th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <?= $data['nama_lengkap']; ?>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <?= $data['alamat']; ?>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <?= $data['no_handphone']; ?>
+                        </td>
+                      </tr>
+                    </table>
+                    <button class="btn  btn-outline-success text-center me-5" type="button">
+                      <?= $data['status']; ?>
+                    </button>
+                    <a href="kelola_pesanan.php?id=<?= $data['id_pemesanan'] ?>">
+                      <button href="kelola_pesanan.php" class="btn  btn-outline-warning text-center me-5 bi bi-pencil"
+                        type="button">
+                        UPDATE STATUS PESANAN
+                      </button>
+                    </a>
+                  </div>
                 </div>
-                <table>
 
-                  <tr>
-                    <th class="col-4" style="width: 350px">Produk
-                      <?= $data['nama_produk']; ?>
-                    </th>
-                    <th class="col-4" style="width: 350px"></th>
-                    <th class="col-4 text-center" style="width: 350px">
-                      <?= tgljm_full($data['tgl_pesan']); ?>
-                    </th>
-
-                  </tr>
-                  <tr>
-                    <td>
-                      <?= $data['kuantitas']; ?> X Rp.
-                      <?= $data['harga']; ?>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>Total Rp.
-                      <?= $data['total']; ?>
-                    </th>
-                  </tr>
-                  <tr>
-                    <th>Alamat Pengguna</th>
-                  </tr>
-                  <tr>
-                    <td>
-                      <?= $data['nama_lengkap']; ?>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <?= $data['alamat']; ?>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <?= $data['no_handphone']; ?>
-                    </td>
-                  </tr>
-                </table>
-                <button class="btn  btn-outline-success text-center me-5" type="button">
-                  <?= $data['status']; ?>
-                </button>
-                <a href="kelola_pesanan.php">
-                <button href="kelola_pesanan.php" class="btn  btn-outline-warning text-center me-5 bi bi-pencil" type="button">
-                  UPDATE STATUS PESANAN
-                </button>
-                </a>
               </div>
             </div>
+            <?php
+            $nomor++;
+          }
+          ?>
+       
 
-          </div>
-        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        </html>
         <?php
-        $nomor++;
-      }
-      ?>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    </html>
-  <?php
+        case 'selesai':
+          $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'selesai' order by id_pemesanan  desc");
+          foreach ($data as $data) {
+            ?>
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 col-center mt-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="col-3">
+                    <button class=" text-center btn btn-sm btn-outline-primary  ">
+                      <?= $nomor; ?>
+                    </button>
+                  </div>
+                  <table>
+
+                    <tr>
+                      <th class="col-4" style="width: 350px">Produk
+                        <?= $data['nama_produk']; ?>
+                      </th>
+                      <th class="col-4" style="width: 350px"></th>
+                      <th class="col-4 text-center" style="width: 350px">
+                        <?= tgljm_full($data['tgl_pesan']); ?>
+                      </th>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <?= $data['kuantitas']; ?> X Rp.
+                        <?= $data['harga']; ?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Total Rp.
+                        <?= $data['total']; ?>
+                      </th>
+                    </tr>
+                    <tr>
+                      <th>Alamat Pengguna</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <?= $data['nama_lengkap']; ?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <?= $data['alamat']; ?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <?= $data['no_handphone']; ?>
+                      </td>
+                    </tr>
+                  </table>
+                  <button class="btn  btn-outline-success text-center me-5" type="button">
+                    <?= $data['status']; ?>
+                  </button>
+                  <a href="kelola_pesanan.php?id=<?= $data['id_pemesanan'] ?>">
+                    <button href="kelola_pesanan.php" class="btn  btn-outline-warning text-center me-5 bi bi-pencil"
+                      type="button">
+                      UPDATE STATUS PESANAN
+                    </button>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <?php
+          $nomor++;
+          }
+          ?>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        </html>
+        <?php
+
+        case 'kirim':
+          $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'kirim' order by id_pemesanan  desc");
+          foreach ($data as $data) {
+            ?>
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 col-center mt-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="col-3">
+                    <button class=" text-center btn btn-sm btn-outline-primary  ">
+                      <?= $nomor; ?>
+                    </button>
+                  </div>
+                  <table>
+
+                    <tr>
+                      <th class="col-4" style="width: 350px">Produk
+                        <?= $data['nama_produk']; ?>
+                      </th>
+                      <th class="col-4" style="width: 350px"></th>
+                      <th class="col-4 text-center" style="width: 350px">
+                        <?= tgljm_full($data['tgl_pesan']); ?>
+                      </th>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <?= $data['kuantitas']; ?> X Rp.
+                        <?= $data['harga']; ?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Total Rp.
+                        <?= $data['total']; ?>
+                      </th>
+                    </tr>
+                    <tr>
+                      <th>Alamat Pengguna</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <?= $data['nama_lengkap']; ?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <?= $data['alamat']; ?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <?= $data['no_handphone']; ?>
+                      </td>
+                    </tr>
+                  </table>
+                  <button class="btn  btn-outline-success text-center me-5" type="button">
+                    <?= $data['status']; ?>
+                  </button>
+                  <a href="kelola_pesanan.php?id=<?= $data['id_pemesanan'] ?>">
+                    <button href="kelola_pesanan.php" class="btn  btn-outline-warning text-center me-5 bi bi-pencil"
+                      type="button">
+                      UPDATE STATUS PESANAN
+                    </button>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <?php
+          $nomor++;
+          }
+          ?>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        </html>
+        <?php
+
+        case 'batal':
+          $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'batal' order by id_pemesanan  desc");
+          foreach ($data as $data) {
+            ?>
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 col-center mt-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="col-3">
+                    <button class=" text-center btn btn-sm btn-outline-primary  ">
+                      <?= $nomor; ?>
+                    </button>
+                  </div>
+                  <table>
+
+                    <tr>
+                      <th class="col-4" style="width: 350px">Produk
+                        <?= $data['nama_produk']; ?>
+                      </th>
+                      <th class="col-4" style="width: 350px"></th>
+                      <th class="col-4 text-center" style="width: 350px">
+                        <?= tgljm_full($data['tgl_pesan']); ?>
+                      </th>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <?= $data['kuantitas']; ?> X Rp.
+                        <?= $data['harga']; ?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Total Rp.
+                        <?= $data['total']; ?>
+                      </th>
+                    </tr>
+                    <tr>
+                      <th>Alamat Pengguna</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <?= $data['nama_lengkap']; ?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <?= $data['alamat']; ?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <?= $data['no_handphone']; ?>
+                      </td>
+                    </tr>
+                  </table>
+                  <button class="btn  btn-outline-success text-center me-5" type="button">
+                    <?= $data['status']; ?>
+                  </button>
+                  <a href="kelola_pesanan.php?id=<?= $data['id_pemesanan'] ?>">
+                    <button href="kelola_pesanan.php" class="btn  btn-outline-warning text-center me-5 bi bi-pencil"
+                      type="button">
+                      UPDATE STATUS PESANAN
+                    </button>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <?php
+          $nomor++;
+          }
+          ?>
+        </div>
+      
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        </html>
+      <?php
+      }
 }
 ?>

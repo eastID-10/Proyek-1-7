@@ -123,11 +123,7 @@ switch ($_GET['action']) {
                                 <button class="btn  btn-outline-success text-center me-5" type="button">
                                     <?= $data['status']; ?>
                                 </button>
-                                <div class="text-center mb-lg-5">
-                                    <button type="submit" class="btn btn-secondary text-white">
-                                        <h6>Unduh Rincian Pesanan</h6>
-                                    </button>
-                                </div>
+                                
                             </div>
                         </div>
 
