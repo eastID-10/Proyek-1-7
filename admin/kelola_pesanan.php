@@ -55,13 +55,21 @@ switch ($_GET['action']) {
         </nav>
         <!-- nav status -->
         <nav class="navbar navbar-light bg-light">
-          <form class="container-fluid justify-content-start">
-            <button class="btn btn-sm btn-outline-success me-5" type="button">Masih Diproses</button>
-            <button class="btn btn-sm btn-outline-dark me-5" type="button">Pesanan Dikirim</button>
-            <button class="btn btn-sm btn-outline-warning me-5" type="button">Pesanan Selesai</button>
-            <button class="btn btn-sm btn-outline-danger me-5" type="button">Pesanan Batal</button>
-          </form>
+          
+            <a href="pesanan_masuk.php?proses=proses">
+              <button class="btn btn-sm btn-outline-success me-5" type="button">Masih Diproses</button>
+            </a>
+            <a href="pesanan_masuk.php?proses=kirim">
+              <button class="btn btn-sm btn-outline-dark me-5" type="button">Pesanan Dikirim</button>
+            </a>
+            <a href="pesanan_masuk.php?proses=selesai">
+              <button class="btn btn-sm btn-outline-warning me-5" type="button">Pesanan Selesai</button>
+            </a>
+            <a href="pesanan_masuk.php?proses=batal">
+              <button class="btn btn-sm btn-outline-danger me-5" type="button">Pesanan Batal</button>
+            </a>
         </nav>
+        
         <?php
         $query = mysqli_query($koneksi, "SELECT * FROM pemesanan WHERE id_pemesanan='" . $_GET['id'] . "'");
         $data = mysqli_fetch_assoc($query);

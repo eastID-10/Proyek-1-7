@@ -54,15 +54,7 @@ switch ($_GET['action']) {
             </div>
           </div>
         </nav>
-        <!-- nav status -->
-        <nav class="navbar navbar-light bg-light">
-          <form class="container-fluid justify-content-start">
-            <button class="btn btn-sm btn-outline-success me-5" type="button">Masih Diproses</button>
-            <button class="btn btn-sm btn-outline-dark me-5" type="button">Pesanan Dikirim</button>
-            <button class="btn btn-sm btn-outline-warning me-5" type="button">Pesanan Selesai</button>
-            <button class="btn btn-sm btn-outline-danger me-5" type="button">Pesanan Batal</button>
-          </form>
-        </nav>
+        
 
         <button class="btn btn-lg btn-success mt-5">Proses</button>
         <form action="detail_pesanan.php?action=save" method="POST">
@@ -147,6 +139,7 @@ switch ($_GET['action']) {
           $("#total").attr("value", total)
         });
       </script>
+      
     </body>
 
     </html>
