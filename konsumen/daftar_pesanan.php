@@ -77,7 +77,7 @@ switch ($_GET['action']) {
 
       switch ($_GET['proses']) {
         default:
-          $data = $db->tampil_data("SELECT * FROM pemesanan WHERE  status = 'proses' order by id_pemesanan  desc");
+          $data = $db->tampil_data("SELECT * FROM pemesanan WHERE  status = 'proses' AND id_user='" . $_SESSION['id'] . "' order by id_pemesanan  desc");
           foreach ($data as $data) {
             ?>
             <div class="row">
@@ -153,7 +153,7 @@ switch ($_GET['action']) {
         <?php
         break;
         case 'selesai':
-          $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'selesai' order by id_pemesanan  desc");
+          $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'selesai' AND id_user='" . $_SESSION['id'] . "' order by id_pemesanan  desc");
           foreach ($data as $data) {
             ?>
           <div class="row">
@@ -228,7 +228,7 @@ switch ($_GET['action']) {
         <?php
         break;
         case 'kirim':
-          $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'kirim' order by id_pemesanan  desc");
+          $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'kirim' AND id_user='" . $_SESSION['id'] . "' order by id_pemesanan  desc");
           foreach ($data as $data) {
             ?>
           <div class="row">
@@ -303,7 +303,7 @@ switch ($_GET['action']) {
         <?php
         break;
         case 'batal':
-          $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'batal' order by id_pemesanan  desc");
+          $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'batal' AND id_user='" . $_SESSION['id'] . "' order by id_pemesanan  desc");
           foreach ($data as $data) {
             ?>
           <div class="row">
