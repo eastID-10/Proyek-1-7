@@ -55,21 +55,21 @@ switch ($_GET['action']) {
         </nav>
         <!-- nav status -->
         <nav class="navbar navbar-light bg-light">
-          <li>
-            <a href="">
+          
+            <a href="pesanan_masuk.php?proses=proses">
               <button class="btn btn-sm btn-outline-success me-5" type="button">Masih Diproses</button>
             </a>
-            <a href="">
+            <a href="pesanan_masuk.php?proses=kirim">
               <button class="btn btn-sm btn-outline-dark me-5" type="button">Pesanan Dikirim</button>
             </a>
-            <a href="pesanan_masuk.php?selesai=<?= $data['selesai']; ?>">
+            <a href="pesanan_masuk.php?proses=selesai">
               <button class="btn btn-sm btn-outline-warning me-5" type="button">Pesanan Selesai</button>
             </a>
-            <a href="">
+            <a href="pesanan_masuk.php?proses=batal">
               <button class="btn btn-sm btn-outline-danger me-5" type="button">Pesanan Batal</button>
             </a>
-            <a class="nav-link" href="pesanan_masuk.php?action=selesai">Pesanan selesai</a>
-          </li>
+
+          
         </nav>
 
     </body>
@@ -160,7 +160,7 @@ switch ($_GET['action']) {
         </html>
         <?php
         break;
-       case 'selesai':
+        case 'selesai':
           $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'selesai' order by id_pemesanan  desc");
           foreach ($data as $data) {
             ?>
@@ -399,8 +399,8 @@ switch ($_GET['action']) {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
         </html>
-      <?php
-      break;
+        <?php
+        break;
       }
 
 }
