@@ -56,17 +56,24 @@ switch ($_GET['action']) {
         <!-- nav status -->
         <nav class="navbar navbar-light bg-light">
           <li>
-            <button class="btn btn-sm btn-outline-success me-5" type="button">Masih Diproses</button>
-            <button class="btn btn-sm btn-outline-dark me-5" type="button">Pesanan Dikirim</button>
-            <a href="pesanan_masuk.php?action=selesai=<?= $data['selesai']; ?>"><button
-                class="btn btn-sm btn-outline-warning me-5" type="button">Pesanan Selesai</button></a>
-            <button class="btn btn-sm btn-outline-danger me-5" type="button">Pesanan Batal</button>
+            <a href="">
+              <button class="btn btn-sm btn-outline-success me-5" type="button">Masih Diproses</button>
+            </a>
+            <a href="">
+              <button class="btn btn-sm btn-outline-dark me-5" type="button">Pesanan Dikirim</button>
+            </a>
+            <a href="pesanan_masuk.php?action=selesai=<?= $data['selesai']; ?>">
+              <button class="btn btn-sm btn-outline-warning me-5" type="button">Pesanan Selesai</button>
+            </a>
+            <a href="">
+              <button class="btn btn-sm btn-outline-danger me-5" type="button">Pesanan Batal</button>
+            </a>
             <a class="nav-link" href="pesanan_masuk.php?action=selesai">Pesanan selesai</a>
           </li>
         </nav>
 
     </body>
-    <div class="container">
+    <div class="container">S
       <?php
       $nomor = 1;
       $db = new database();
@@ -146,9 +153,9 @@ switch ($_GET['action']) {
             $nomor++;
           }
           ?>
-       
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
         </html>
         <?php
@@ -227,7 +234,7 @@ switch ($_GET['action']) {
           $nomor++;
           }
           ?>
-        
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
         </html>
@@ -307,7 +314,7 @@ switch ($_GET['action']) {
           $nomor++;
           }
           ?>
-        
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
         </html>
@@ -388,7 +395,7 @@ switch ($_GET['action']) {
           }
           ?>
         </div>
-      
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
         </html>
