@@ -62,7 +62,7 @@ switch ($_GET['action']) {
             <a href="">
               <button class="btn btn-sm btn-outline-dark me-5" type="button">Pesanan Dikirim</button>
             </a>
-            <a href="pesanan_masuk.php?action=selesai=<?= $data['selesai']; ?>">
+            <a href="pesanan_masuk.php?selesai=<?= $data['selesai']; ?>">
               <button class="btn btn-sm btn-outline-warning me-5" type="button">Pesanan Selesai</button>
             </a>
             <a href="">
@@ -73,7 +73,7 @@ switch ($_GET['action']) {
         </nav>
 
     </body>
-    <div class="container">S
+    <div class="container">
       <?php
       $nomor = 1;
       $db = new database();
@@ -159,7 +159,7 @@ switch ($_GET['action']) {
 
         </html>
         <?php
-
+        break ;
         case 'selesai':
           $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'selesai' order by id_pemesanan  desc");
           foreach ($data as $data) {
@@ -239,7 +239,7 @@ switch ($_GET['action']) {
 
         </html>
         <?php
-
+        break ;
         case 'kirim':
           $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'kirim' order by id_pemesanan  desc");
           foreach ($data as $data) {
@@ -319,7 +319,7 @@ switch ($_GET['action']) {
 
         </html>
         <?php
-
+        break ;
         case 'batal':
           $data = $db->tampil_data("SELECT * FROM pemesanan WHERE status = 'batal' order by id_pemesanan  desc");
           foreach ($data as $data) {
@@ -400,6 +400,8 @@ switch ($_GET['action']) {
 
         </html>
       <?php
+      break ;
       }
+
 }
 ?>
