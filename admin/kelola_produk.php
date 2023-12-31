@@ -153,7 +153,7 @@ case 'save':
             <label>Stok:</label>
             <input type="text" name="stok" class="form-control" required="true" value="<?=$data['stok']?>"> <br>
             <button type="submit" class="btn btn-primary">UPDATE</button>
-            <a href="kelola_produk.php" class="btn btn default">KEMBALI</a>
+            <button class="btn btn-danger" href="kelola_produk.php?action=default">KEMBALI</button>
         </form>
     <?php
     break;

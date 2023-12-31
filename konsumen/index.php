@@ -52,7 +52,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password'])) {
           </div>
         </div>
       </nav>
-      <div class="row mt-3">
+      <div class="row mt-3 mb-lg-5">
       <div class="col-4">
         <a class="link-dark link-underline link-underline-opacity-0" href="beli_produk.php">
           <div class="bi bi-clipboard-plus-fill "  style="font-size: 60px; text-align: center;"> 

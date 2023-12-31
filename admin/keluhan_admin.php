@@ -66,7 +66,7 @@ include "../assets/database.php";
                   <tr>
                     <th>No</th>
                     <tr>
-                      <td><?=$data['id_keluhan'];?></td>
+                      <td><?=$nomor;?></td>
                     </tr>
                   </tr>
                     <tr>

@@ -72,6 +72,48 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password'])) {
             <h4 > Keluhan Konsumen</h4> </div>
           </a>
       </div>
+
+      <!--  -->
+      <div class="container ">
+      <div class="col-4 container-ds text-white rounded-2 text-center">
+          <h3>Selamat Datang! </h3>
+          <p>Dapatkan Laporan Cepat Dari Data Di Bawah Ini </p>
+        </div>
+      <?php
+          $nomor =1;
+          $db = new database();
+          $data = $db->tampil_data("SELECT * FROM keluhan ORDER BY id_keluhan desc");
+          foreach($data as $data){
+            
+            ?>
+      
+        <div class="row">
+        
+            <div class="col-3"></div>
+          <div class="col-6 col-center mt-lg-4">
+            <div class="card">
+              <div class="card-body">
+                <table >
+                  <tr>
+                    <th>Total Pesanan </th>
+                    <tr>
+                      <td><?=$nomor;?></td>
+                    </tr>
+                  </tr>
+                    
+                </table>
+              </div>
+            </div>
+          </div>
+          </div>
+          
+      
+      <?php
+        $nomor++;
+      }
+          ?>
+          </div>
+          <!--  -->
       <div class="container mt-lg-5 ">
         <div class="row">
       <div class="col-4"></div>
