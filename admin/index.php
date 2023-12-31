@@ -80,10 +80,12 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password'])) {
           <p>Dapatkan Laporan Cepat Dari Data Di Bawah Ini </p>
         </div>
       <?php
-          $nomor =1;
+          
           $db = new database();
-          $data = $db->tampil_data("SELECT * FROM keluhan ORDER BY id_keluhan desc");
-          foreach($data as $data){
+          $data_pesanan = mysqli_query($koneksi, "SELECT * from pemesanan");
+          $jumlah_pesanan = mysqli_num_rows($data_pesanan);
+          // $data = $db->tampil_data("SELECT COUNT as jumlah * FROM Pemesanan WHERE status = 'proses' ");
+          // foreach($data as $data){
             
             ?>
       
@@ -97,7 +99,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password'])) {
                   <tr>
                     <th>Total Pesanan </th>
                     <tr>
-                      <td><?=$nomor;?></td>
+                      <td><?=$jumlah_pesanan;?></td>
                     </tr>
                   </tr>
                     
@@ -108,48 +110,10 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password'])) {
           </div>
           
       
-      <?php
-        $nomor++;
-      }
-          ?>
+      
           </div>
           <!--  -->
-      <div class="container mt-lg-5 ">
-        <div class="row">
-      <div class="col-4"></div>
-        <div class="col-4 container-ds text-white rounded-2 text-center">
-          <h3>Selamat Datang! </h3>
-          <p>Dapatkan Laporan Cepat Dari Data Di Bawah Ini </p>
-        </div>
-      </div>
-      </div>
-      <div class="row mt-lg-5 ">
-        <div class="col-4"></div>
-        <div class="col-4">
-        <table class="table table-hover">
-         <tr>
-          <th>Total Pesanan Hari Ini</th>
-          <td>120</td>
-         </tr>
-         <tr>
-          <th>Total Pendapatan Hari Ini</th>
-          <td>Rp 1000.000</td>
-        </tr>
-        <tr>
-            <th>Total Stok Kulit Lumpia</th>
-            <td>340 Pack</td>
-        </tr>
-        <tr>
-            <th>Total Semua Pesanan</th>
-            <td>500 </td>
-        </tr>
-        <tr>
-            <th>Total Semua Pendapatan</th>
-            <td>Rp 30.000.000</td>
-        </tr>
-       </table>
-      </div>
-      </div>
+      
     
   
 
@@ -159,5 +123,5 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password'])) {
 
 
 <?php
-}
+
 ?>
